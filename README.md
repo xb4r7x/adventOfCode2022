@@ -9,5 +9,11 @@ This script will create the directory structure, get your input file, and create
 It takes the day as an argument. There's currently no validation. Don't fuck it up.
 It requires that your adventofcode.com session cookie be stored in an environment variable $ADVENT_SESSION
 
+## Obtaining session cookie
+- Log into adventofcode.com
+- Navigate to any day's input page
+- Open your browser's dev tools and find your session cookie in the request headers.
+- The same session cookie should be valid for the whole month, so you should only have to do this once. 
+
 # Folder Structure
 Each day of the advent calendar has its own numbered folder. All files to solve the problems of the day will be placed inside that folder. 
