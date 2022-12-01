@@ -4,7 +4,7 @@ day=$1
 mkdir "./$1"
 scriptPath="./$1/day$1.py"
 cookie="session=$ADVENT_SESSION"
-curl --cookie $cookie https://adventofcode.com/2021/day/$1/input > ./$1/input.txt
+curl --cookie $cookie https://adventofcode.com/2022/day/$1/input > ./$1/input.txt
 
 cat <<- EOF > $scriptPath
 with open('input.txt') as f:
@@ -28,4 +28,4 @@ EOF
 
 echo "Created directory: ./$1"
 echo "Created script: $scriptPath"
-echo "Fetched input file from https://adventofcode.com/2021/day/$1/input here: ./$1/input.txt"
+echo "Fetched input file from https://adventofcode.com/2022/day/$1/input here: ./$1/input.txt"
