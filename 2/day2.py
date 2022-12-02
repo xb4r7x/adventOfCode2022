@@ -40,9 +40,9 @@ def getScore2(_split):
     if _split[1] == "Y": 
         if _split[0] == "A":
             score = 4
-        elif _split[0] == "B":
+        if _split[0] == "B":
             score = 5
-        elif _split[0] == "C":
+        if _split[0] == "C":
             score = 6
     if _split[1] == "Z":
         if _split[0] == "A":
