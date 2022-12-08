@@ -8,7 +8,7 @@ curl --cookie $cookie https://adventofcode.com/2022/day/$1/input > ./$1/input.tx
 
 cat <<- EOF > $scriptPath
 with open('input.txt') as f:
-    lines = f.readlines()
+    lines = [line.rstrip() for line in f]
 
 def main():
     print("The solution for part 1 is: {0}".format(part1Solution(lines)))
