@@ -72,24 +72,44 @@ def part1Solution(lines):
 
     for x, y in get_all_keys(pathDict):
         continue
-    key = ""
-    for x, y in get_all_keys(pathDict,False):
-        if isinstance(y,dict):
-            key = x
-            continue
-        sizes[key] = int(sizes[key]) + int(y)
-        continue
-    
-    
 
-    answerList = []
-    for k, v in sizes.items():
-        if v <= 100000:
-            answerList.append(v)
+    for x, y in get_all_keys(pathDict, False):
+        fileList = find_key(pathDict,y)
+        if fileList:
+            for idx in range(len(fileList)-1):
+                filesize = int(nested_get(pathDict,fileList))
+                filepath = sizes[fileList[idx]]
+                print("Adding {} to {} for {}".format(filesize, filepath, fileList[idx]))
+                sizes[fileList[idx]] = int(filepath) + filesize
 
     print(sizes)
+    answerList = []
+    for k, v in sizes.items():
+        print("Testing {}".format(v))
+        if v < 100000:
+            print("{} is less than 10000".format(v))
+            answerList.append(v)
+
+    #print(sizes)
     print(answerList)
     return sum(answerList)
+
+def nested_get(input_dict, nested_key):
+    internal_dict_value = input_dict
+    for k in nested_key:
+        internal_dict_value = internal_dict_value.get(k, None)
+        if internal_dict_value is None:
+            return None
+    return internal_dict_value
+
+def find_key(d, value):
+    for k,v in d.items():
+        if isinstance(v, dict):
+            p = find_key(v, value)
+            if p:
+                return [k] + p
+        elif v == value:
+            return [k]
 
 def get_all_keys(d,isFirst=True):
     for key, value in d.items():
