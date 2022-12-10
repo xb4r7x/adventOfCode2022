@@ -2,6 +2,7 @@
 
 day=$1
 mkdir "./$1"
+touch "./$1/ex_input.txt"
 scriptPath="./$1/day$1.py"
 cookie="session=$ADVENT_SESSION"
 curl --cookie $cookie https://adventofcode.com/2022/day/$1/input > ./$1/input.txt

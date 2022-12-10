@@ -76,22 +76,19 @@ def part1Solution(lines):
     for x, y in get_all_keys(pathDict, False):
         fileList = find_key(pathDict,y)
         if fileList:
+            print(fileList)
             for idx in range(len(fileList)-1):
                 filesize = int(nested_get(pathDict,fileList))
                 filepath = sizes[fileList[idx]]
                 print("Adding {} to {} for {}".format(filesize, filepath, fileList[idx]))
                 sizes[fileList[idx]] = int(filepath) + filesize
 
-    print(sizes)
     answerList = []
     for k, v in sizes.items():
-        print("Testing {}".format(v))
-        if v < 100000:
-            print("{} is less than 10000".format(v))
+        if v <= 100000:
+            print("{} is less than 100000".format(v))
             answerList.append(v)
 
-    #print(sizes)
-    print(answerList)
     return sum(answerList)
 
 def nested_get(input_dict, nested_key):
