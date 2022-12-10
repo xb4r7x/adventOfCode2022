@@ -13,7 +13,7 @@ def pixelState(pixels, x):
     return pixel
 
 def getSignal(cycle, x):
-    if cycle == 20 or cycle == 60 or cycle == 100 or cycle == 140 or cycle == 180 or cycle == 220:
+    if cycle in [20, 60, 100, 140, 180, 220]:
         return cycle * x
     return 0
 
